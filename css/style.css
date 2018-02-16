@@ -1,0 +1,109 @@
+body {
+	background: #c9c9c9;
+    text-align: center;
+}
+
+canvas {
+	width: 50%;
+	height: 50%;
+}
+
+@media only screen and (min-width: 800 px)
+{
+	canvas {
+		margin: 10 px;
+		height: 707px;
+		width: 707px;
+	}
+}
+
+a:hover {
+	cursor: pointer;
+}
+
+.heading {
+	color: #fff;
+	font-family: 'Press Start 2P', cursive;
+}
+
+.button {
+	border-radius: 3px;
+	display: inline-block;
+	padding: 6px 40px;
+	margin: 65px;
+	background: #68d44f;
+	font-family: 'Press Start 2P';
+	color: #fff;
+	font-size: 29px;
+	letter-spacing: 1px;
+	text-shadow: 1px 1px 1px green;
+}
+
+.button:hover {
+	opacity: 0.95;
+}
+
+/* Responsive image */
+.image-responsive {
+	display: block;
+	width: 100%;
+}
+
+.overlay {
+	background: #c9c9c9;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+}
+
+.overlay > .content {
+	margin: auto;
+}
+
+.hidden {
+	display: none;
+}
+
+/* header */
+header {
+	position: absolute;
+	width: 300px;
+	top: 15px;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+/* collision */
+.collision {
+	background: red;
+	opacity: 0.2;
+}
+
+/* success */
+.success {
+	background: red;
+	opacity: 0.2;
+}
+/* game over screen */
+.game-over > .content {
+	max-width: 800px;
+	margin-bottom: 0;
+	padding: 12% 10%;
+}
+
+.game-over .heading {
+	font-size: 100px;
+	margin-bottom: 0;
+}
+
+.game-over img {
+	position: absolute;
+	top: 140px;
+	right: 0;
+	left: 0;
+	margin: auto;
+}
