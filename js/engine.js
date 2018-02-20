@@ -65,7 +65,6 @@ var Engine = (function(global) {
     function init() {
         reset();
         lastTime = Date.now();
-        //document.getElementById("myAudio").play();
         main();
     }
 
@@ -111,7 +110,6 @@ var Engine = (function(global) {
 
                     reset(99);
                 }
-                //return player.lives >= 1 ? player.updateLives('remove', 1) : reset(99);
             }
 
         /* check if the player got to the other side, if so call level update */

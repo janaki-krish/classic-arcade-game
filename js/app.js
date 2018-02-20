@@ -2,18 +2,10 @@
     @author Janaki K
 */
 
-/*
-    TODO:
-    *   -Add score stats
-    *   -Add constants
-    *   -Add sounds and game over logic
-*/
-
-//Declare all variables
 // Place all enemy objects in an array called allEnemies
 var allEnemies = [];
 
-//declare constants
+//constants
 var constants = {
     //Default canvas text font family
     FONT: '34pt Press-Start-2P' , //'24pt ArcadeClassic',
@@ -51,30 +43,18 @@ var constants = {
 
 
 $(document).ready(function() {
-    //play background music
     gameMusic.play();
-    //adjust the volume
     gameMusic.volume(0.3);
-
-    /*$("#play-game").click(function() {
-        //play the game sounds
-        gameSelect.play();
-        gameMusic.fade(0.3, 0.7, 2000);
-        //unpause the game
-        paused = false;
-    });
-    */
 
     //hide the game over screen on Play click
     $("#playAgain").click(function() {
-        //hide the game over screen
         $("#gameOver").hide();
         level.reset();
-        //gameSelect.play();
         gameMusic.fade(0.3, 0.1, 1000);
         paused = false;
     });
 });
+
 /*  Enemy class
  *  Accepts positionY and speed
  */
@@ -142,9 +122,10 @@ Enemies.prototype.reset = function() {
 };
 
 var enemies = new Enemies();
-/* Now write your own player class
- * This class requires an update(), render() and
- * a handleInput() method.
+
+
+/*
+ * The player class handles all the behaviors/properties of the player
  */
 var Player = function() {
     this.sprite = 'images/char-boy.png';
@@ -155,6 +136,10 @@ var Player = function() {
     this.lives = 3;
 };
 
+/*
+ * Update method retains the x and y positions of the player
+ * These properties are used to check if the player moves out of the canvas
+*/
 Player.prototype.update = function() {
     this.xNow = this.x;
     this.yNow = this.y;
@@ -164,11 +149,17 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+
 Player.prototype.reset = function() {
     this.x = constants.PLAYER_X_POSITION;
     this.y = constants.PLAYER_Y_POSITION;
     this.lives = 3;
 }
+
+/*
+ * This method handles the keyboard inputs - up, down, right, left arrows
+ * Moves the player accordingly adding/subtracting the player speed
+*/
 Player.prototype.handleInput = function(keycode) {
     if ((keycode == 'left') && (this.x != constants.CANVAS_LEFT))
         this.x = this.xNow + -constants.PLAYER_SPEED;
@@ -180,6 +171,10 @@ Player.prototype.handleInput = function(keycode) {
         this.y = this.yNow + constants.PLAYER_SPEED;
 };
 
+/*
+ * When there is a collision, reset the player to default x,y positions
+ * with a small effect
+*/
 Player.prototype.hit = function()
 {
     this.x = constants.PLAYER_X_POSITION;
@@ -195,7 +190,8 @@ Player.prototype.crossed = function() {
 
 };
 
-/* Update player lives
+/*
+ * Update player lives
  * Parameter value indicates the number of lives to add/remove
  * Action indicates whether to add or remove
  */
@@ -219,6 +215,10 @@ var Level = function() {
     enemies.spawn(4);
 };
 
+/*
+ *  Level Reset code shall be invoked if all the 3 lives are used up
+ *  or the Play again button is pressed
+*/
 Level.prototype.reset = function(i=0) {
     if (i != 0)
     {
@@ -233,8 +233,6 @@ Level.prototype.reset = function(i=0) {
         enemies.reset();
         player.reset();
         stats.reset();
-        // if (player.)
-        // player.updateLives('add', 2);
         enemies.spawn(3);
     }
 
@@ -245,9 +243,10 @@ Level.prototype.update = function() {
 };
 
 var level = new Level();
+
 /*
  * Status panel - Panel at the top of the canvas
- * Scoreboard
+ * Handles the display of score/lives of the player
 */
 
 var Stats = function()
