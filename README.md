@@ -5,7 +5,7 @@
 	Part of Udacity FrontEnd Web Development Nanodegree. The idea is to recreate the classic arcade game with provided visual assets - player, enemies
 
 ### How to Run
-	- Clone or download the repository link (https://github.com/janaki-krish/classic-arcade-game)
+	- Clone or download the repository link [https://github.com/janaki-krish/classic-arcade-game]
 	- Open index.html to start the game
 	
 ### How to Play
